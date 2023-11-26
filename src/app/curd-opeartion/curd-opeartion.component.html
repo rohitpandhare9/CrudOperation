@@ -1,0 +1,88 @@
+<h3>{{titleofchild}}</h3>
+
+
+<div id="heading" class="userDiv">
+    <p class="h1 text-center"><i>User Registration</i></p>
+</div>
+<div id="form" class="userDiv">
+    <div class="mb-3">
+        <label for="username" class="form-label">User Name</label>
+        <input type="text" [(ngModel)]="fullName" class="form-control" id="username" placeholder="Enter user name">
+    </div>
+  <div class="mb-3">
+    <label for="useremail" class="form-label">User Email</label>
+    <input type="email" [(ngModel)]="email" class="form-control" [disabled]="isDisabled" id="useremail" placeholder="Enter user mailid">
+  </div>
+  <div class="mb-3">
+    <label for="usercell" class="form-label">User cell Number</label>
+    <input type="text" [(ngModel)]="phoneNumber" class="form-control" id="usercell" placeholder="Enter user cell">
+  </div>
+  <div class="mb-3">
+    <label for="useradr" class="form-label">User address</label>
+    <div class="text-center">
+        <div class="row">
+          <div class="col">
+            <input type="text" [(ngModel)]="line1" class="form-control" id="useradr" placeholder="line 1">
+          </div>
+          <div class="col">
+            <input type="text" [(ngModel)]="line2" class="form-control" id="useradr" placeholder="line 2">
+          </div>
+          <div class="col">
+            <input type="number" [(ngModel)]="pinCode" class="form-control" id="useradr" placeholder="pin code">
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <textarea [(ngModel)]="message" class="form-control" id="message" rows="3"></textarea>
+</div>
+
+<!-- click button for data submiting -->
+<button type="button" *ngIf="saveButton" (click)="insert()" class="btn btn-primary">Save user</button>
+
+<!-- update button for data update  -->
+<button type="button" *ngIf="!saveButton" (click)="updateButton()" class="btn btn-primary">Update user</button>
+
+
+</div>
+<div id="table" class="userDiv">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Cell Number</th>
+            <th scope="col">User address</th>
+            <th scope="col">Message</th>
+            <th scope="col">Update User</th>
+            <th scope="col">Delete User</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+                <tr *ngFor="let objArr of user; index as id">
+                    <td>{{id+1}}</td>
+                    <td>{{objArr.fullName}}</td>
+                    <td>{{objArr.email}}</td>
+                    <td>{{objArr.phoneNumber}}</td>
+                    <td>{{objArr.address.line1 +", "+objArr.address.line2 +", "+objArr.address.pinCode}}</td>
+                    <td>{{objArr.message}}</td>
+                    <td>
+                        <!-- (click)="updateRecord()" -->
+                      <svg (click)="updateRecord(objArr)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                      </svg>
+                    </td>
+                    <td>
+                        <!-- (click)="deleteRecord()"  -->
+                      <svg (click)="deleteRecord(objArr)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                      </svg>
+                    </td>
+                </tr>    
+        </tbody>
+      </table>
+</div>
