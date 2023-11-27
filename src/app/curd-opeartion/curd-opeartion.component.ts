@@ -11,7 +11,7 @@ export class CurdOpeartionComponent implements OnInit {
   user :User[] =[];
   
 
-   @Input() titleofchild : string= '';
+  //  @Input() titleofchild : string= '';
 
   fullName:string='';
   email:string='';
@@ -35,6 +35,11 @@ export class CurdOpeartionComponent implements OnInit {
       alert("email already Exist bhai sorry");
     }else{
 
+
+
+
+
+
      let obj:User={    
        fullName:this.fullName,
        email:this.email,
@@ -46,7 +51,10 @@ export class CurdOpeartionComponent implements OnInit {
        },
        message:this.message
 
-  };
+ 
+ 
+ 
+      };
   this.user.push(obj);
   this.callMe();
    }
@@ -102,7 +110,7 @@ deleteRecord(objArr:User):void{
   
     for(let i = 0; i< this.user.length ; i++){
     
-      // yacha aarth aasa hoto ki jai email yenar aahe tyacha match nahi zal tr ja yacha madhe  
+      // yacha aarth aasa hoto ki je email yenar aahe tyacha match nahi zal tr ja yacha madhe  
       // nahi zal tr te sarv array object ghe and parat ekda reassign kar ekala
       if(objArr.email != this.user[i].email){
    
